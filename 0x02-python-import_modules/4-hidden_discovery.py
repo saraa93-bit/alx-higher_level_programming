@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import dis
-
-with open("hidden_4.pyc", "rb") as file:
-    code = file.read()
-
-dis.dis(code)
+if __name__ == "__main__":
+    import hidden_4
+    for i in dir(hidden_4):
+        if i != "__":
+            print(i)
+    
