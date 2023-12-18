@@ -6,8 +6,6 @@ count = 0
             if type(my_list[i]) is int:
                 print("{:d}".format(my_list[i]), end="")
                 count += 1
-        print()
         return count
     except IndexError:
-        print()
         return count
