@@ -61,4 +61,5 @@ class Rectangle:
             return rectangle_str.rstrip('\n')
 
     def __repr__(self):
+        """Return a string representation of the rectangle"""
         return f"Rectangle({self.__width}, {self.__height})"
