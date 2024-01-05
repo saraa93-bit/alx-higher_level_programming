@@ -1,2 +1,5 @@
 #!/usr/bin/python3
+
+""" function would you use to get the type of an object"""
+
 type
