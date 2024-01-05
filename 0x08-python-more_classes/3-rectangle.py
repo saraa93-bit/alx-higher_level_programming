@@ -38,7 +38,7 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
-        
+
     def __str__(self):
         total = ""
         if self.__height == 0 or self.width == 0:
