@@ -1,33 +1,68 @@
 #!/usr/bin/python3
-"""
-This is the "Rectangle"  module.
-
-This module provides a Rectangle class.
+"""Module 7-rectangle
+Defines a Rectangle class.
 """
 
 
 class Rectangle:
-    """A Rectangle class with attributes width and height,
-    methods area, perimeter, print, str, repr, and del, and
-    class attribute number_of_instances that keeps track of # of instances,
-    and class attribute print_symbol which is used as symbol for printing.
+    """Rectangle class defined by width and height.
+
+    Attributes:
+        number_of_instances: number of Rectangle instances,
+        increments with every instantitation,
+        decrements with every deletion
     """
 
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
+        """Initializes a Rectangle instance.
+
+        Args:
+            width: width of the rectangle
+            height: height of the rectangle
+        """
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
 
+    def __str__(self):
+        """Returns an informal and nicely printable string representation
+        of a Rectangle instance, filled with the '#' character."""
+        if self.__height == 0 or self.__width == 0:
+            return ''
+        rec_str = ''
+        for i in range(self.__height):
+            for j in range(self.__width):
+                rec_str += str(self.print_symbol)
+            rec_str += '\n'
+        return rec_str[:-1]
+
+    def __repr__(self):
+        """Return a string representation of a Rectangle instance
+        that is able to recreate a new instance by using eval()
+        """
+        return "Rectangle({}, {})".format(self.__width, self.__height)
+
+    def __del__(self):
+        """Deletes a Rectangle instance."""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
+
     @property
     def width(self):
+        """Retrieves the width of a Rectangle instance."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        if type(value) is not int:
+        """Sets the width of a Rectangle instance
+
+        Args:
+            value: value of the width, must be a positive integer
+        """
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
@@ -35,27 +70,36 @@ class Rectangle:
 
     @property
     def height(self):
+        """Retrieves the height of a Rectangle instance."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        if type(value) is not int:
+        """Sets the height of a Rectangle instance
+
+        Args:
+            value: value of the height, must be a positive integer
+        """
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
 
-    def __repr__(self):
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+    def area(self):
+        """Calculates the area of a Rectangle instance
 
-    def __str__(self):
-        total = ""
-        for i in range(self.__height):
-            for j in range(self.__width):
-                try:
-                    total += str(self.print_symbol)
-                except Exception:
-                    total += type(self).print_symbol
-            if i is not self.__height - 1:
-                total += "\n"
-        return total
+        Returns:
+            Area of the the rectangle, given by height * width
+        """
+        return self.__width * self.__height
+
+    def perimeter(self):
+        """Calculates the perimeter of a Rectangle instance
+
+        Returns:
+            Perimeter of the rectangle, given by 2 * (height + width)
+        """
+        if self.__height == 0 or self.__width == 0:
+            return 0
+        return 2 * (self.__width + self.__height)
