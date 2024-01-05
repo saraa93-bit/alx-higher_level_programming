@@ -3,7 +3,9 @@
 
 
 class Rectangle:
-    """Represent a Rectangle."""
+    """Represent a Rectangle and
+    class attribute number_of_instances that keeps track of # of instances.
+    """
 
     number_of_instances = 0
 
