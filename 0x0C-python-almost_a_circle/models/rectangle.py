@@ -1,25 +1,28 @@
 #!/usr/bin/python3
-'''Class Rectangle'''
-
+'''
+    Class Rectangle
+'''
 from models.base import Base
 
 
 class Rectangle(Base):
     '''
-        Defines the Rectangle class
-        Inherits from Base.
+        Defining the Rectangle class
+        Inherits from:
+            Base
     '''
+
     def __init__(self, width, height, x=0, y=0, id=None):
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
-        
-         @property
+
+    @property
     def width(self):
         '''
-            Return private attribute
+            Returning private attribute
         '''
         return self.__width
 
@@ -45,8 +48,8 @@ class Rectangle(Base):
         '''
         self.setter_validation("height", value)
         self.__height = value
-        
-        @property
+
+    @property
     def x(self):
         '''
             Returning private attribute
@@ -75,8 +78,8 @@ class Rectangle(Base):
         '''
         self.setter_validation("y", value)
         self.__y = value
-        
-        def area(self):
+
+    def area(self):
         '''
             Returns the area of the rectangle
         '''
@@ -135,5 +138,3 @@ class Rectangle(Base):
         '''
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
                                                        self.width, self.height)
-        
-    
