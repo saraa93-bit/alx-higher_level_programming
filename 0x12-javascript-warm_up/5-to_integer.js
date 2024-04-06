@@ -1,8 +1,8 @@
 #!/usr/bin/node
-// prints two arguments passed to it, in the following format: “ is ”
-
-if (isNaN(process.argv[2])) {
-    console.log('Not a number');
-  } else {
-    console.log('My number: ' + parseInt(process.argv[2]));
-  }
+const args = process.argv;
+const number = Number(args[2]);
+if (args[2] && Number.isInteger(number)) {
+  console.log('My number: ' + number);
+} else {
+  console.log('Not a number');
+}
